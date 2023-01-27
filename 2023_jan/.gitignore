@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/2023_jan
+2023_jan.so
+2023_jan.dylib
+2023_jan.dll
+2023_jan.a
+2023_jan.lib
+2023_jan-test-*
+*.exe
+*.o
+*.obj
+*.lst

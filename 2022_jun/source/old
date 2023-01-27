@@ -1,0 +1,113 @@
+import std;
+
+struct Coord {
+    ushort x, y;
+}
+
+enum N = 5;
+char[N][N] regions;
+ushort[N][N] values, answer;
+ushort[char] regionsLen;
+bool[int][char] regionPossible;
+bool[int][N][N] possible;
+
+//void l1Elimitaion()
+//{
+//    foreach (i; 0 .. N)
+//        foreach (j; 0 .. N)
+//        {
+//            if (values[i][j] != 0)
+//            {
+//                auto tmp = values[i][j];
+//                if (tmp != 1)
+//                    for (int k = i - tmp + 1; k <= i + tmp - 1; k++)
+//                        for (int l = j - tmp + 1; l <= j + tmp - 1; l++)
+//                            if ((k >= 0) && (k < N) && (l >= 0) && (l < N))
+//                                if (abs(k - i) + abs(l - j) < tmp)
+//                                {
+//                                    possible[k][l].remove(tmp);
+//                                }
+//                values[i][j] = 0;
+//                answer[i][j] = tmp;
+//            }
+//        }
+//}
+//
+//void regionElimination() {
+//    foreach (i; 0 .. N)
+//        foreach (j; 0 .. N)
+//            if (regions[i][j] in regionPossible) {
+//                foreach (v; regionPossible[regions[i][j]].byValue())
+//                    possible[i][j].remove(v);
+//            }
+//    regionPossible.clear();
+//}
+
+//void findExact() {
+//    foreach (i; 0 .. N)
+//        foreach (j; 0 .. N)
+//            if (possible[i][j].length == 1) {
+//                auto tmp = possible[i][j].keys[0];
+//                possible[i][j].remove(tmp);
+//                values[i][j] = tmp;
+//                regionPossible[regions[i][j]][tmp] = true;
+//            }
+//}
+
+void main()
+{
+    auto regFile = File("regions.txt");
+    auto valFile = File("values.txt");
+
+    // reading data about regions
+    foreach (i; 0 .. N)
+    {
+        auto regLine = regFile.readln().strip;
+        foreach (j; 0 .. N)
+        {
+            regions[i][j] = regLine[j];
+            regionsLen[regLine[j]]++;
+        }
+    }
+
+    // each region filled with region's length
+    foreach (k, v; regionsLen.byPair())
+        foreach (el; iota(1, v + 1))
+            regionPossible[k][el] = true;
+
+    // remove already filled values from possible ranges
+    foreach (i; 0 .. N)
+    {
+        auto valLine = valFile.readln().strip;
+        foreach (j; 0 .. N)
+        {
+            ushort cur = cast(ushort)(valLine[j] - '0');
+            if (cur != 0)
+            {
+                values[i][j] = cur;
+                regionPossible[regions[i][j]].remove(cur);
+            }
+        }
+    }
+
+    // fill possible values from regions information
+    foreach (i; 0 .. N)
+        foreach (j; 0 .. N)
+            possible[i][j] = regionPossible[regions[i][j]];
+
+    // now will be used to delete new filled values
+    regionPossible.clear();
+
+    foreach(_; 0 .. 3) {
+        findExact();
+        l1Elimitaion();
+        regionElimination();
+    }
+
+    writeln("---");
+    writeln(possible);
+    writeln("---");
+    writeln(regionPossible);
+    writeln("---");
+    writeln(answer);
+}

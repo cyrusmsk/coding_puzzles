@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/2022_june
+2022_june.so
+2022_june.dylib
+2022_june.dll
+2022_june.a
+2022_june.lib
+2022_june-test-*
+*.exe
+*.o
+*.obj
+*.lst
