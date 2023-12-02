@@ -42,8 +42,7 @@ void p2() {
     stdin
         .byLineCopy
         .map!(e => e.split(": ")[1])
-        .map!(e => e.replace(";",",").split(","))
-        .map!(e => e.map!(a => a.strip))
+        .map!(e => e.replace(";",",").split(", "))
         .map!(e => e.map!(a => toRGB(a.split(" "))))
         .map!(e => e.fold!(maxCube))
         .map!(e => e.fold!"a * b")
