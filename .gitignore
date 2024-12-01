@@ -1,3 +1,4 @@
 .dub
 !*.d
 **/input.txt
+**/test.txt
