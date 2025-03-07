@@ -1,4 +1,3 @@
 # Internationalization Puzzles
 
-New interesting puzzle - https://i18n-puzzles.com
-Similar to AoC
+New interesting puzzle similar to AoC https://i18n-puzzles.com
