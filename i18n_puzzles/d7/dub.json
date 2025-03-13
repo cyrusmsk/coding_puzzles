@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"Sergei Giniatulin"
+	],
+	"copyright": "Copyright © 2025, Sergei Giniatulin",
+	"dependencies": {
+		"dateparser": "~>3.0.4"
+	},
+	"description": "A minimal D application.",
+	"license": "proprietary",
+	"name": "d7"
+}
