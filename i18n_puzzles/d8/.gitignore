@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/d3
+d3.so
+d3.dylib
+d3.dll
+d3.a
+d3.lib
+d3-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
