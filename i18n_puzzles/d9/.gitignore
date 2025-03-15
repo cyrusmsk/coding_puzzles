@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/d4
+d4.so
+d4.dylib
+d4.dll
+d4.a
+d4.lib
+d4-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
