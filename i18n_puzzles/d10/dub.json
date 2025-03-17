@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"Sergei Giniatulin"
+	],
+	"copyright": "Copyright © 2025, Sergei Giniatulin",
+	"dependencies": {
+		"passwd": "~>0.3.1"
+	},
+	"description": "A minimal D application.",
+	"license": "proprietary",
+	"name": "d10"
+}
